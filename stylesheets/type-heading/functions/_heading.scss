@@ -69,14 +69,13 @@
 ){
   $_return: $heading;
   $heading: th-heading-get-map($heading);
+  $_return: nth($heading, 1);
   @if $breakpoint {
-    @each $property in $heading {
-      @if th-property($property, breakpoint) == $breakpoint {
-        $_return: $property;
+    @each $heading-list in $heading {
+      @if th-property($heading: $heading-list, $property-name: breakpoint, $convert: false) == $breakpoint {
+        $_return: $heading-list;
       }
     }
-  } @else {
-    $_return: nth($heading, 1);
   }
   @return $_return;
 }
