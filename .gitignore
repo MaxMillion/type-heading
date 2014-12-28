@@ -2,3 +2,4 @@
 .sass-cache/
 type-heading-*.gem
 _site
+test/stylesheets

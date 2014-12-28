@@ -1,0 +1,8 @@
+// Mixins / Property
+
+.default {
+  @include th-property-default(font-size);
+  @include th-property-default(line-height);
+  @include th-property-default(margin-top);
+  @include th-property-default(margin-bottom);
+}
