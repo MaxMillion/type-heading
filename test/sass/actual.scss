@@ -2,5 +2,5 @@
 // Generates the 'actual' test enviroment.
 
 $th-env: actual;
-$th-warn: false;
+$th-warn: true;
 @import "test";
