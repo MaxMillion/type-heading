@@ -17,13 +17,13 @@ $th-env: false !default;
 ){
   $describe: $describe !global;
   /* Describe: #{$describe} */
-  @if $expect and $actual {
+  @if $expect != null and $actual != null {
     $expect: $expect !global;
     $actual: $actual !global;
     @include th-assert-warn;
   }
   @content;
-  @if $expect and $actual {
+  @if $expect != null and $actual != null {
     $expect: null !global;
     $actual: null !global;
   }
