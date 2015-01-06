@@ -68,8 +68,8 @@
   $breakpoint: false
 ){
   $_return: $heading;
-  $heading: th-heading-get-map($heading);
   @if $breakpoint {
+    $heading: th-heading-get-map($heading);
     @each $property in $heading {
       @if th-property($property, breakpoint) == $breakpoint {
         $_return: $property;
