@@ -13,14 +13,17 @@ $th-env: false !default;
 @mixin th-assert(
   $describe,
   $expect: null,
-  $actual: null
+  $actual: null,
+  $warn: true
 ){
   $describe: $describe !global;
   /* Describe: #{$describe} */
   @if $expect != null and $actual != null {
     $expect: $expect !global;
     $actual: $actual !global;
-    @include th-assert-warn;
+    @if $warn == true {
+      @include th-assert-warn;
+    }
   }
   @content;
   @if $expect != null and $actual != null {
