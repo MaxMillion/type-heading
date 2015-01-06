@@ -6,13 +6,15 @@
 // @param $heading: mixed | A heading map key or list (required). | $th-headings
 // @param $breakpoint: number | A heading list breakpoint (required). | $th-headings
 // @param $direction: string | Media query direction (optional). | min-width, max-width
+// @param $base-font-size: number | Number to calculate values from (optional).
 
 @mixin th-breakpoint-heading(
   $heading,
   $breakpoint,
-  $direction: min-width
+  $direction: min-width,
+  $base-font-size: $th-base-font-size
 ){
   @media screen and (#{$direction}: #{$breakpoint}){
-    @include th-heading($heading, $breakpoint);
+    @include th-heading($heading, $breakpoint, $base-font-size);
   }
 }

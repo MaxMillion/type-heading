@@ -1,0 +1,165 @@
+// Functions / Unit
+
+$th-units-base: px;
+$th-units-relative: (em, rem, relative);
+$th-units-absolute: (px,);
+
+// @function th-unit-get
+//
+// Returns a property's "convert to" unit.
+// @access private
+// @param $property-name: string | A heading property name (required). | $th-units
+// @param $_return: number | Propertie's "convert to" unit.
+
+@function _th-unit-get(
+	$property-name
+){
+	$_return: $property-name;
+	$_return: map-get($th-units, $property-name);
+	@return $_return;
+}
+
+// @function th-unit
+//
+// Returns a property's "converted" value.
+// @access private
+// @param $property-name: string | A heading property name (required). | $th-units
+// @param $value: number | number | A "to convert" value.
+// @param $base-font-size: number | Font size used for relative calculations.
+// @return $_return: number | A "converted" value.
+
+@function _th-unit(
+	$property-name,
+	$property-value,
+	$base-font-size: $th-base-font-size
+){
+	@if not map-has-key($th-units, $property-name) {
+		@return $property-value;
+	}
+	$_return: $property-value;
+	$unit: _th-unit-get($property-name);
+	@if not $unit {
+		@return $_return;
+	}
+	$function: _th-unit-convert-#{$unit};
+	@if function-exists($function) {
+		$_return: call($function, $property-value, $base-font-size);
+	}
+	@return $_return;
+}
+
+// @function _th-unit-convert-absolute
+//
+// Converts a number to an absolute number.
+// @access private
+// @param $number: number | The number to convert.
+// @param $unit: string | The type of absolute unit.
+// @param $base-font-size: number | Font size used for relative calculations.
+// @return $_return: number | The converted absolute number.
+
+@function _th-unit-convert-absolute(
+	$number,
+	$unit,
+	$base-font-size: $th-base-font-size
+){
+	$_return: $number;
+	@if th-list-has($th-units-relative, unit($number)) {
+		$_return: th-unit-strip($number) * th-unit-strip($base-font-size);
+		@if $unit {
+			$_return: th-unit-convert($_return, $unit);
+		}
+	}
+	@return $_return;
+}
+
+// @function _th-unit-convert-relative
+//
+// Converts a number to a relative number.
+// @access private
+// @param $number: number | The number to convert.
+// @param $unit: string | The type of relative unit.
+// @param $base-font-size: number | Font size used for relative calculations.
+// @return $_return: number | The converted number.
+
+@function _th-unit-convert-relative(
+	$number,
+	$unit,
+	$base-font-size: $th-base-font-size
+){
+	$_return: $number;
+	@if th-list-has($th-units-absolute, unit($number)) {
+		$_return: th-unit-strip($number) / th-unit-strip($base-font-size);
+		@if $unit {
+			$_return: th-unit-convert($_return, $unit);
+		}
+	}
+  @return $_return;
+}
+
+// @function th-unit-convert-em
+//
+// Converts a number to an em number.
+// @access private
+// @param $number: number | The number to convert.
+// @param $base-font-size: number | Font size used for relative calculations.
+// @return $_return: number | The converted number.
+
+@function _th-unit-convert-em(
+	$number,
+	$base-font-size: $th-base-font-size
+){
+	$_return: $number;
+	$_return: _th-unit-convert-relative($number, em, $base-font-size);
+	@return $_return;
+}
+
+// @function th-unit-convert-rem
+//
+// Converts a number to a rem number.
+// @access private
+// @param $number: number | The number to convert.
+// @param $base-font-size: number | Font size used for relative calculations.
+// @return $_return: number | The converted number.
+
+@function _th-unit-convert-rem(
+	$number,
+	$base-font-size: $th-base-font-size
+){
+	$_return: $number;
+	$_return: _th-unit-convert-relative($number, rem, $base-font-size);
+	@return $_return;
+}
+
+// @function th-unit-convert-rel
+//
+// Converts a number to a relative number.
+// @access private
+// @param $number: number | The number to convert.
+// @param $base-font-size: number | Font size used for relative calculations.
+// @return $_return: number | The converted number.
+
+@function _th-unit-convert-rel(
+	$number,
+	$base-font-size: $th-base-font-size
+){
+	$_return: $number;
+	$_return: _th-unit-convert-relative($number, false, $base-font-size);
+	@return $_return;
+}
+
+// @function th-unit-convert-px
+//
+// Converts a number to a px number.
+// @access private
+// @param $number: number | The number to convert.
+// @param $base-font-size: number | Font size used for relative calculations.
+// @return $_return: number | The converted number.
+
+@function _th-unit-convert-px(
+	$number,
+	$base-font-size: $th-base-font-size
+){
+	$_return: $number;
+	$_return: _th-unit-convert-absolute($number, px, $base-font-size);
+	@return $_return;
+}

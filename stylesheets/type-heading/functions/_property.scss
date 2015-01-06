@@ -17,18 +17,24 @@ $th-properties: (
 // @param $heading: mixed | A heading map key or list (required). | $th-headings
 // @param $property-name: string | A heading property name (required). | $th-defaults
 // @param $breakpoint: number | A heading list breakpoint (optional). | $th-headings
+// @param $base-font-size: number | Number to calculate values from (optional).
 // @return $_return: number | Heading property value.
 
 @function th-property(
   $heading,
   $property-name,
-  $breakpoint: false
+  $breakpoint: false,
+  $base-font-size: $th-base-font-size,
+  $convert: true
 ){
   $heading-list: th-heading-get($heading, $breakpoint);
   $property-index: _th-property-index($property-name);
   $_return: th-list-get-deep($heading-list, $property-index);
   @if $_return == default or $_return == false { 
-    $_return: th-property-default($property-name);
+    $_return: th-property-default($property-name, $base-font-size, false);
+  }
+  @if $convert == true {
+    $_return: _th-unit($property-name, $_return, $base-font-size);
   }
   @return $_return;
 }
@@ -38,13 +44,16 @@ $th-properties: (
 // Return heading list font size property value.
 // @param $heading: mixed | A heading map key or list (required). | $th-headings
 // @param $breakpoint: number | A heading list breakpoint (optional). | $th-headings
+// @param $base-font-size: number | Number to calculate values from (optional).
 // @return $_return: number | Heading list font size property value.
 
 @function th-property-font-size(
   $heading,
-  $breakpoint: false
+  $breakpoint: false,
+  $base-font-size: $th-base-font-size,
+  $convert: true
 ){
-  $_return: th-property($heading, font-size, $breakpoint);
+  $_return: th-property($heading, font-size, $breakpoint, $base-font-size, $convert);
   @return $_return;
 }
 
@@ -53,13 +62,16 @@ $th-properties: (
 // Return heading list line height property value.
 // @param $heading: mixed | A heading map key or list (required). | $th-headings
 // @param $breakpoint: number | A heading list breakpoint (optional). | $th-headings
+// @param $base-font-size: number | Number to calculate values from (optional).
 // @return $_return: number | Heading list line height property value.
 
 @function th-property-line-height(
   $heading,
-  $breakpoint: false
+  $breakpoint: false,
+  $base-font-size: $th-base-font-size,
+  $convert: true
 ){
-  $_return: th-property($heading, line-height, $breakpoint);
+  $_return: th-property($heading, line-height, $breakpoint, $base-font-size, $convert);
   @return $_return;
 }
 
@@ -68,13 +80,16 @@ $th-properties: (
 // Return heading list margin top property value.
 // @param $heading: mixed | A heading map key or list (required). | $th-headings
 // @param $breakpoint: number | A heading list breakpoint (optional). | $th-headings
+// @param $base-font-size: number | Number to calculate values from (optional).
 // @return $_return: number | Heading list margin top property value.
 
 @function th-property-margin-top(
   $heading,
-  $breakpoint: false
+  $breakpoint: false,
+  $base-font-size: $th-base-font-size,
+  $convert: true
 ){
-  $_return: th-property($heading, margin-top, $breakpoint);
+  $_return: th-property($heading, margin-top, $breakpoint, $base-font-size, $convert);
   @return $_return;
 }
 
@@ -83,13 +98,16 @@ $th-properties: (
 // Return heading list margin bottom property value.
 // @param $heading: mixed | A heading map key or list (required). | $th-headings
 // @param $breakpoint: number | A heading list breakpoint (optional). | $th-headings
+// @param $base-font-size: number | Number to calculate values from (optional).
 // @return $_return: number | Heading list margin bottom property value.
 
 @function th-property-margin-bottom(
   $heading,
-  $breakpoint: false
+  $breakpoint: false,
+  $base-font-size: $th-base-font-size,
+  $convert: true
 ){
-  $_return: th-property($heading, margin-bottom, $breakpoint);
+  $_return: th-property($heading, margin-bottom, $breakpoint, $base-font-size, $convert);
   @return $_return;
 }
 
@@ -97,13 +115,19 @@ $th-properties: (
 //
 // Return a default heading property value.
 // @param $property-name: string | A heading property name (required). | $th-defaults
+// @param $base-font-size: number | Number to calculate values from (optional).
 // @return $_return: number | Default heading property value.
 
 @function th-property-default(
-  $property-name
+  $property-name,
+  $base-font-size: $th-base-font-size,
+  $convert: true
 ){
   $_return: $property-name;
   $_return: map-get($th-defaults, $property-name);
+  @if $convert == true {
+    $_return: _th-unit($property-name, $_return, $base-font-size);
+  }
   @return $_return;
 }
 
