@@ -51,14 +51,3 @@
 ){
 	margin-bottom: th-property-margin-bottom($heading, $breakpoint);
 }
-
-// @mixin th-property-default
-// 
-// Output a default heading property value.
-// @param $property-name: string | A heading property name (required). | $th-defaults
-
-@mixin th-property-default(
-	$property-name
-){
-	#{$property-name}: th-property-default($property-name);
-}
