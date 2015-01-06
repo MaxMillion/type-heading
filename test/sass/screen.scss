@@ -24,13 +24,6 @@ $th-defaults: (
   margin-bottom: 20px
   );
 
-$th-units: (
-  font-size: px,
-  line-height: rel,
-  margin-top: em,
-  margin-bottom: em
-  ) !default;
-
 @debug th-test( th-property-default(font-size), 16px );
 @debug th-test( th-property-default(line-height), 24px );
 @debug th-test( th-property-default(margin-top), 24px );
