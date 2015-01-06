@@ -126,10 +126,10 @@ function list-remove-nth {
     $actual: list-remove-nth( (a, b, c, d), 4 )
   ){
     @include th-assert-expect {
-      boolean: $expect;
+      map: $expect;
     }
     @include th-assert-actual {
-      boolean: $actual;
+      map: $actual;
     }
   }
 
