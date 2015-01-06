@@ -154,15 +154,14 @@
   @return $_return;
 }
 
-// @function _th-unit-convert
+// @function th-unit-convert
 //
 // Converts the unit of a number.
-// @access private
 // @param $number: number | A number to convert.
 // @param $unit: string | The unit to convert to.
 // @return $_return: number | The converted number.
 
-@function _th-unit-convert(
+@function th-unit-convert(
   $number,
   $unit
 ){

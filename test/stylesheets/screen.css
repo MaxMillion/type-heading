@@ -1,139 +1,139 @@
-/* line 82, ../sass/screen.scss */
+/* line 89, ../sass/screen.scss */
 .default {
   font-size: 16px;
-  line-height: 24px;
-  margin-top: 24px;
-  margin-bottom: 20px;
-}
-
-/* line 89, ../sass/screen.scss */
-h1 {
-  margin-top: 24px;
-  margin-bottom: 20px;
-  font-size: 36px;
-  line-height: 42px;
-}
-@media screen and (min-width: 768px) {
-  /* line 89, ../sass/screen.scss */
-  h1 {
-    margin-top: 30px;
-    margin-bottom: 35px;
-    font-size: 42px;
-    line-height: 48px;
-  }
-}
-
-/* line 90, ../sass/screen.scss */
-h2 {
-  margin-top: 24px;
-  margin-bottom: 20px;
-  font-size: 24px;
-  line-height: 36px;
-}
-@media screen and (min-width: 768px) {
-  /* line 90, ../sass/screen.scss */
-  h2 {
-    margin-top: 25px;
-    margin-bottom: 20px;
-    font-size: 32px;
-    line-height: 38px;
-  }
-}
-
-/* line 91, ../sass/screen.scss */
-h3 {
-  margin-top: 30px;
-  margin-bottom: 30px;
-  font-size: 18px;
-  line-height: 24px;
-}
-@media screen and (min-width: 768px) {
-  /* line 91, ../sass/screen.scss */
-  h3 {
-    margin-top: 24px;
-    margin-bottom: 30px;
-    font-size: 16px;
-    line-height: 24px;
-  }
-}
-
-/* line 92, ../sass/screen.scss */
-h4 {
-  margin-top: 24px;
-  margin-bottom: 20px;
-  font-size: 16px;
-  line-height: 24px;
-}
-@media screen and (min-width: 768px) {
-  /* line 92, ../sass/screen.scss */
-  h4 {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    font-size: 24px;
-    line-height: 32px;
-  }
-}
-
-/* line 93, ../sass/screen.scss */
-h5 {
-  margin-top: 24px;
-  margin-bottom: 20px;
-  font-size: 14px;
-  line-height: 24px;
-}
-
-/* line 94, ../sass/screen.scss */
-h6 {
-  margin-top: 24px;
-  margin-bottom: 20px;
-  font-size: 12px;
-  line-height: 24px;
+  line-height: 1.5;
+  margin-top: 1.5em;
+  margin-bottom: 1.25em;
 }
 
 /* line 96, ../sass/screen.scss */
 h1 {
-  margin-top: 30px;
-  margin-bottom: 35px;
-  font-size: 42px;
-  line-height: 48px;
+  margin-top: 0.66667em;
+  margin-bottom: 0.55556em;
+  font-size: 36px;
+  line-height: 1.16667;
+}
+@media screen and (min-width: 768px) {
+  /* line 96, ../sass/screen.scss */
+  h1 {
+    margin-top: 0.71429em;
+    margin-bottom: 0.83333em;
+    font-size: 42px;
+    line-height: 1.14286;
+  }
 }
 
 /* line 97, ../sass/screen.scss */
 h2 {
-  margin-top: 25px;
-  margin-bottom: 20px;
-  font-size: 32px;
-  line-height: 38px;
+  margin-top: 1em;
+  margin-bottom: 0.83333em;
+  font-size: 24px;
+  line-height: 1.5;
+}
+@media screen and (min-width: 768px) {
+  /* line 97, ../sass/screen.scss */
+  h2 {
+    margin-top: 0.78125em;
+    margin-bottom: 0.625em;
+    font-size: 32px;
+    line-height: 1.1875;
+  }
 }
 
 /* line 98, ../sass/screen.scss */
 h3 {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 1.66667em;
+  margin-bottom: 1.66667em;
   font-size: 18px;
-  line-height: 24px;
+  line-height: 1.33333;
+}
+@media screen and (min-width: 768px) {
+  /* line 98, ../sass/screen.scss */
+  h3 {
+    margin-top: 1.5em;
+    margin-bottom: 1.875em;
+    font-size: 16px;
+    line-height: 1.5;
+  }
 }
 
 /* line 99, ../sass/screen.scss */
 h4 {
-  margin-top: 24px;
-  margin-bottom: 20px;
+  margin-top: 1.5em;
+  margin-bottom: 1.25em;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 1.5;
+}
+@media screen and (min-width: 768px) {
+  /* line 99, ../sass/screen.scss */
+  h4 {
+    margin-top: 2.08333em;
+    margin-bottom: 2.08333em;
+    font-size: 24px;
+    line-height: 1.33333;
+  }
 }
 
 /* line 100, ../sass/screen.scss */
 h5 {
-  margin-top: 24px;
-  margin-bottom: 20px;
+  margin-top: 1.71429em;
+  margin-bottom: 1.42857em;
   font-size: 14px;
-  line-height: 24px;
+  line-height: 1.71429;
 }
 
 /* line 101, ../sass/screen.scss */
 h6 {
-  margin-top: 24px;
-  margin-bottom: 20px;
+  margin-top: 2em;
+  margin-bottom: 1.66667em;
   font-size: 12px;
-  line-height: 24px;
+  line-height: 2;
+}
+
+/* line 103, ../sass/screen.scss */
+h1 {
+  margin-top: 0.71429em;
+  margin-bottom: 0.83333em;
+  font-size: 42px;
+  line-height: 1.14286;
+}
+
+/* line 104, ../sass/screen.scss */
+h2 {
+  margin-top: 0.78125em;
+  margin-bottom: 0.625em;
+  font-size: 32px;
+  line-height: 1.1875;
+}
+
+/* line 105, ../sass/screen.scss */
+h3 {
+  margin-top: 1.66667em;
+  margin-bottom: 1.66667em;
+  font-size: 18px;
+  line-height: 1.33333;
+}
+
+/* line 106, ../sass/screen.scss */
+h4 {
+  margin-top: 1.5em;
+  margin-bottom: 1.25em;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* line 107, ../sass/screen.scss */
+h5 {
+  margin-top: 1.71429em;
+  margin-bottom: 1.42857em;
+  font-size: 14px;
+  line-height: 1.71429;
+}
+
+/* line 108, ../sass/screen.scss */
+h6 {
+  margin-top: 2em;
+  margin-bottom: 1.66667em;
+  font-size: 12px;
+  line-height: 2;
 }
