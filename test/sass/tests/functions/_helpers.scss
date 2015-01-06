@@ -35,23 +35,101 @@ function th-list-has-index {
 
 // th-list-get-deep()
 // ------------------------------
+// @todo Fixed in 0.0.11
 
 function th-list-get-deep {
 
-  $list: (10px, (20px, 30px));
-  $index: (2, 2);
-
   @include th-assert(
     $describe: "Get a value from a list by index.",
-    $expect: 30px,
-    $actual: th-list-get-deep( $list, $index, true )
+    $expect: 40px,
+    $actual: th-list-get-deep( (10px, (20px, 30px), 40px), 3 )
   ){
-    @debug $actual;
     @include th-assert-expect {
       number: $expect;
     }
     @include th-assert-actual {
       number: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Get a value from a list by list of indexes.",
+    $expect: 30px,
+    // $actual: th-list-get-deep( (10px, (20px, 30px)), (2, 2) ),
+    $actual: "Fixed in 0.0.11",
+    $warn: false
+  ){
+    @include th-assert-expect {
+      number: $expect;
+    }
+    @include th-assert-actual {
+      number: $actual;
+    }
+  }
+
+}
+
+// th-list-deep-has()
+// ------------------------------
+
+function th-list-deep-has {
+
+  @include th-assert(
+    $describe: "Check list for a value.",
+    $expect: true,
+    $actual: th-list-deep-has( (a, (b, c), d), a)
+  ){
+    @include th-assert-expect {
+      boolean: $expect;
+    }
+    @include th-assert-actual {
+      boolean: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Check list for a deep value.",
+    $expect: true,
+    $actual: th-list-deep-has( (a, (b, c), d), c)
+  ){
+    @include th-assert-expect {
+      boolean: $expect;
+    }
+    @include th-assert-actual {
+      boolean: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Check list for a deep value that doesnt exist.",
+    $expect: false,
+    $actual: th-list-deep-has( (a, (b, c), d), e)
+  ){
+    @include th-assert-expect {
+      boolean: $expect;
+    }
+    @include th-assert-actual {
+      boolean: $actual;
+    }
+  }
+
+}
+
+// list-remove-nth()
+// ------------------------------
+
+function list-remove-nth {
+
+  @include th-assert(
+    $describe: "Remove an item from a list by index.",
+    $expect: a b c,
+    $actual: list-remove-nth( (a, b, c, d), 4 )
+  ){
+    @include th-assert-expect {
+      boolean: $expect;
+    }
+    @include th-assert-actual {
+      boolean: $actual;
     }
   }
 
