@@ -36,7 +36,6 @@
 	$heading,
 	$breakpoint: false
 ){
-	@debug $heading;
 	margin-top: th-property-margin-top($heading, $breakpoint);
 }
 
