@@ -41,7 +41,7 @@
   @if th-list-has-index($list, $index) { 
     $list: nth($list, $index);
     @if list == type-of($list) and $indexes {
-      $list: th-list-get-deep($list, list-remove-nth($indexes, 1));
+      $list: th-list-get-deep($list, nth($indexes, 2));
     }
   } @else if( list != type-of($list) and $index == 1 ) {
     $list: $list;
