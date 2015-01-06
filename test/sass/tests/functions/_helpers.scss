@@ -1,0 +1,58 @@
+// Tests / Functions / Helpers
+
+// th-list-has-index()
+// ------------------------------
+
+function th-list-has-index {
+
+  @include th-assert(
+    $describe: "Check list for an index.",
+    $expect: true,
+    $actual: th-list-has-index( (1, 2, 3), 1 )
+  ){
+    @include th-assert-expect {
+      boolean: $expect;
+    }
+    @include th-assert-actual {
+      boolean: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Check list for an index.",
+    $expect: false,
+    $actual: th-list-has-index( (1, 2, 3), 4 )
+  ){
+    @include th-assert-expect {
+      boolean: $expect;
+    }
+    @include th-assert-actual {
+      boolean: $actual;
+    }
+  }
+
+}
+
+// th-list-get-deep()
+// ------------------------------
+
+function th-list-get-deep {
+
+  $list: (10px, (20px, 30px));
+  $index: (2, 2);
+
+  @include th-assert(
+    $describe: "Get a value from a list by index.",
+    $expect: 30px,
+    $actual: th-list-get-deep( $list, $index, true )
+  ){
+    @debug $actual;
+    @include th-assert-expect {
+      number: $expect;
+    }
+    @include th-assert-actual {
+      number: $actual;
+    }
+  }
+
+}
