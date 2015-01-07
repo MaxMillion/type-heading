@@ -21,8 +21,8 @@ $th-defaults: (
   );
 
 $th-units: (
-  font-size: em,
-  line-height: rel,
-  margin-top: rem,
+  font-size: px,
+  line-height: px,
+  margin-top: px,
   margin-bottom: px
-  ) !default;
+  );
