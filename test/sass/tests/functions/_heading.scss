@@ -102,11 +102,11 @@ function th-heading-has-next {
 // th-heading-get-next()
 // ------------------------------
 
-function th-heading-has-next {
+function th-heading-get-next {
 
 	@include th-assert(
 		$describe: "Get heading with next",
-		$expect: h1,
+		$expect: (10px 20px (30px 40px)),
 		$actual: _th-heading-get-next(h1)
 	){
 		@include th-assert-expect {
