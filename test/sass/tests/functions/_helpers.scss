@@ -113,15 +113,15 @@ function th-list-deep-has {
 
 }
 
-// list-remove-nth()
+// th-list-remove-nth()
 // ------------------------------
 
-function list-remove-nth {
+function th-list-remove-nth {
 
   @include th-assert(
     $describe: "Remove an item from a list by index.",
     $expect: a b c,
-    $actual: list-remove-nth( (a, b, c, d), 4 )
+    $actual: th-list-remove-nth( (a, b, c, d), 4 )
   ){
     @include th-assert-expect {
       map: $expect;
