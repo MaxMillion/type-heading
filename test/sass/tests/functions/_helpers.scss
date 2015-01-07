@@ -55,8 +55,7 @@ function th-list-get-deep {
   @include th-assert(
     $describe: "Get a value from a list by list of indexes.",
     $expect: 30px,
-    // $actual: th-list-get-deep( (10px, (20px, 30px)), (2, 2) ),
-    $actual: "Fixed in 0.0.11",
+    $actual: th-list-get-deep( (10px, (20px, 30px)), (2, 2) ),
     $warn: false
   ){
     @include th-assert-expect {
