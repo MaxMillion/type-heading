@@ -52,6 +52,7 @@
 
 @mixin th-headings(
   $heading,
+  $direction: min-width,
   $base-font-size: $th-base-font-size
 ){
   $heading-map: th-heading-get-map($heading);
@@ -62,6 +63,7 @@
         @include th-breakpoint-heading(
           $heading: $heading,
           $breakpoint: $breakpoint,
+          $direction: $direction,
           $base-font-size: $base-font-size
         );
       } @else {

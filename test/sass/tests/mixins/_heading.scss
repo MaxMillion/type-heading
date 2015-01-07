@@ -97,7 +97,7 @@ mixin th-headings {
   }
 
   @include th-assert(
-    $describe: "Output styles for a heading with a breakpoint."
+    $describe: "Output styles for a heading with a min-width breakpoint."
   ){
     @include th-assert-expect {
       margin-top: 30px;
@@ -113,6 +113,26 @@ mixin th-headings {
     }
     @include th-assert-actual {
       @include th-headings(h1);
+    }
+  }
+
+  @include th-assert(
+    $describe: "Output styles for a heading with a max-width breakpoint."
+  ){
+    @include th-assert-expect {
+      margin-top: 30px;
+      margin-bottom: 40px;
+      font-size: 10px;
+      line-height: 20px;
+      @media screen and (max-width: 768px) {
+        margin-top: 70px;
+        margin-bottom: 80px;
+        font-size: 50px;
+        line-height: 60px;
+      }
+    }
+    @include th-assert-actual {
+      @include th-headings(h1, max-width);
     }
   }
 
