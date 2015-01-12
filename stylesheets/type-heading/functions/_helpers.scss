@@ -1,5 +1,43 @@
 // Functions / Helpers
 
+
+// Math
+// ------------------------------
+
+// th-math-power
+// Returns a powered number by exponent.
+//
+// @since 0.0.11
+// @type function
+// @group helpers
+//
+// @param {Number} $number The base number. 
+// @param {Number} $exponent The base number's exponent. 
+//
+// @returns {Number} The powered number.
+//
+// @example scss Calculate 10 to the power of 3.
+// // th-math-power(10, 3)
+// // // 1000
+
+@function th-math-power(
+  $number,
+  $exponent
+){
+  $_return: $number;
+  @if $exponent > 1 {
+    @for $i from 2 through $exponent {
+      $_return: $_return * $number;
+    }
+  }
+  @if $exponent < 1 {
+    @for $i from 0 through -#{$exponent} {
+      $_return: $_return / $number;
+    }
+  }
+  @return $_return; 
+}
+
 // Lists
 // ------------------------------
 
