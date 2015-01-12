@@ -38,6 +38,34 @@
   @return $_return; 
 }
 
+// th-math-round-to
+// Returns a floated number rounded to a decimal point.
+//
+// @since 0.0.10
+// @type function
+// @group helpers
+//
+// @see {function} th-math-power
+//
+// @param {Number} $number The number to round from.
+// @param {Float} $decimal The decimal place to round to.
+//
+// @returns {Number} The rounded number.
+//
+// @example scss Round 1.234 to 2 decimal places.
+// // th-math-round-to(1.234, 2)
+// // // 1.23
+
+@function th-math-round-to(
+  $number,
+  $decimal
+){
+  $_return: $number;
+  $_return: round( $number * th-math-power(10, $decimal) );
+  $_return: $_return / th-math-power(10, $decimal);
+  @return $_return;
+}
+
 // Lists
 // ------------------------------
 
