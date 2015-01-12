@@ -65,6 +65,7 @@ $th-units-absolute: (px,);
 	$_return: $number;
 	@if th-list-has($th-units-relative, unit($number)) {
 		$_return: th-unit-strip($number) * th-unit-strip($base-font-size);
+		$_return: th-math-round-to($_return, 5);
 		@if $unit {
 			$_return: th-unit-convert($_return, $unit);
 		}
@@ -89,6 +90,7 @@ $th-units-absolute: (px,);
 	$_return: $number;
 	@if th-list-has($th-units-absolute, unit($number)) {
 		$_return: th-unit-strip($number) / th-unit-strip($base-font-size);
+		$_return: th-math-round-to($_return, 5);
 		@if $unit {
 			$_return: th-unit-convert($_return, $unit);
 		}
