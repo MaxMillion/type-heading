@@ -10,9 +10,9 @@ mixin th-breakpoint-heading {
     @include th-assert-expect {
       @media screen and (min-width: 768px) {
         margin-top: 69px;
-        margin-bottom: 69px;
-        font-size: 49px;
-        line-height: 59px;
+        margin-bottom: 1.40816rem;
+        font-size: 2.72222em;
+        line-height: 1.20408;
       }
     }
     @include th-assert-actual {
@@ -26,9 +26,9 @@ mixin th-breakpoint-heading {
     @include th-assert-expect {
       @media screen and (max-width: 768px) {
         margin-top: 69px;
-        margin-bottom: 69px;
-        font-size: 49px;
-        line-height: 59px;
+        margin-bottom: 1.40816rem;
+        font-size: 2.72222em;
+        line-height: 1.20408;
       }
     }
     @include th-assert-actual {

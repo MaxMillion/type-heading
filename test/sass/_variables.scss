@@ -1,6 +1,6 @@
 // Variables
 
-$th-base-font-size: 16px;
+$th-base-font-size: 18px;
 $th-base-line-height: 24px;
 
 $th-headings: (
@@ -21,8 +21,8 @@ $th-defaults: (
   );
 
 $th-units: (
-  font-size: px,
-  line-height: px,
+  font-size: em,
+  line-height: rel,
   margin-top: px,
-  margin-bottom: px
+  margin-bottom: rem
   );
