@@ -1,0 +1,57 @@
+<article class="doc doc-function">
+<header class="doc-header">
+<h2>{{ function.title }}</h2>
+</header>
+<div class="doc-content">
+<section class="doc-section doc-section-details">
+<h3 class="doc-section-title">Details</h3>
+<table class="doc-details">
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Since</th>
+<th>Group</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Function</td>
+<td>{{function.description}}</td>
+<td>0.0.11</td>
+<td>Helpers</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="doc-section doc-section-parameters">
+<h3 class="doc-section-title">Parameters</h3>
+{% for a in function.params %}
+{% for b in a %}
+**${{b[0]}}**
+{% for c in b[1] %}
+{% if c.ret %}
+- Return: {{ c.ret }}
+{% endif %}
+{% if c.desc %}
+- Description: {{ c.desc }}
+{% endif %}
+{% if c.req %}
+- Required: {{ c.req }}
+{% endif %}
+{% if c.def %}
+- Default: {{ c.def }}
+{% endif %}
+{% if c.cont %}
+- Context: {{ c.cont }}
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% endfor %}
+</section>
+<section class="doc-section doc-section-examples">
+<h3 class="doc-section-title">Examples</h3>
+{{function.content}}
+</section>
+</div>
+</article>
