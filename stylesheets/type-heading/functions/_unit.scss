@@ -62,12 +62,10 @@ $th-units-absolute: (px,);
 	$base-font-size: $th-base-font-size
 ){
 	$_return: $number;
-	@if th-list-has($th-units-relative, unit($number)) {
-		$_return: th-unit-strip($number) * th-unit-strip($base-font-size);
-		$_return: th-math-round-to($_return, 5);
-		@if $unit {
-			$_return: round(th-unit-convert($_return, $unit));
-		}
+	$_return: th-unit-strip($number) * th-unit-strip($base-font-size);
+	$_return: th-math-round-to($_return, 5);
+	@if $unit {
+		$_return: round(th-unit-convert($_return, $unit));
 	}
 	@return $_return;
 }
