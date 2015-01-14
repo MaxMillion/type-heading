@@ -72,7 +72,7 @@ $th-units-absolute: (px,);
 
 // @function _th-unit-convert-relative
 //
-// Converts a number to a relative number.
+// Converts an absolute number to a relative number.
 // @access private
 // @param $number: number | The number to convert.
 // @param $unit: string | The type of relative unit.
