@@ -146,7 +146,7 @@ $th-units-absolute: (px,);
 
 // @function th-unit-convert-px
 //
-// Converts a number to a px number.
+// Converts a relative number to a px number.
 // @access private
 // @param $number: number | The number to convert.
 // @param $base-font-size: number | Font size used for relative calculations.
