@@ -1,0 +1,304 @@
+// Tests / Functions / Unit
+
+// _th-unit-get()
+// ------------------------------
+
+function _th-unit-get {
+
+  @include th-assert(
+    $describe: "Return convert to unit for a property.",
+    $expect: em,
+    $actual: _th-unit-get(font-size)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+}
+
+// _th-unit()
+// ------------------------------
+
+function _th-unit {
+
+  @include th-assert(
+    $describe: "Convert 10px font size to em.",
+    $expect: 0.55556em,
+    $actual: _th-unit(font-size, 10px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Convert 10px font size with base font size of 20px.",
+    $expect: 0.5em,
+    $actual: _th-unit(font-size, 10px, 20px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+}
+
+// _th-unit-convert-absolute()
+// ------------------------------
+
+function _th-unit-convert-absolute {
+
+  @include th-assert(
+    $describe: "Convert 4.889em to px.",
+    $expect: 88.002px,
+    $actual: _th-unit-convert-absolute(4.889em, px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Convert 4.889 to px.",
+    $expect: 88.002px,
+    $actual: _th-unit-convert-absolute(4.889, px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Convert 4.889rem to px.",
+    $expect: 88.002px,
+    $actual: _th-unit-convert-absolute(4.889rem, px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Convert 2.750em to px with base font size of 32px.",
+    $expect: 88px,
+    $actual: _th-unit-convert-absolute(2.750em, px, 32px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+}
+
+// _th-unit-convert-relative()
+// ------------------------------
+
+function _th-unit-convert-relative {
+
+  @include th-assert(
+    $describe: "Convert 32px to em.",
+    $expect: 1.77778em,
+    $actual: _th-unit-convert-relative(32px, em)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Convert 32px to rel.",
+    $expect: 1.77778,
+    $actual: _th-unit-convert-relative(32px, false)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Convert 32px to rem.",
+    $expect: 1.77778rem,
+    $actual: _th-unit-convert-relative(32px, rem)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Convert 32px to em with base font size of 12px.",
+    $expect: 2.66667em,
+    $actual: _th-unit-convert-relative(32px, em, 12px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+}
+
+// _th-unit-convert-em()
+// ------------------------------
+
+function _th-unit-convert-em {
+
+  @include th-assert(
+    $describe: "Convert 22px to em.",
+    $expect: 1.22222em,
+    $actual: _th-unit-convert-em(22px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Convert 24px to em with base font size of 32px.",
+    $expect: 0.75em,
+    $actual: _th-unit-convert-em(24px, 32px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+}
+
+// _th-unit-convert-rem()
+// ------------------------------
+
+function _th-unit-convert-rem {
+
+  @include th-assert(
+    $describe: "Convert 22px to rem.",
+    $expect: 1.22222rem,
+    $actual: _th-unit-convert-rem(22px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Convert 24px to rem with base font size of 32px.",
+    $expect: 0.75rem,
+    $actual: _th-unit-convert-rem(24px, 32px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+}
+
+// _th-unit-convert-rel()
+// ------------------------------
+
+function _th-unit-convert-rel {
+
+  @include th-assert(
+    $describe: "Convert 22px to rel.",
+    $expect: 1.22222,
+    $actual: _th-unit-convert-rel(22px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Convert 24px to rel with base font size of 32px.",
+    $expect: 0.75,
+    $actual: _th-unit-convert-rem(24px, 32px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+}
+
+// _th-unit-convert-px()
+// ------------------------------
+
+function _th-unit-convert-px {
+
+  @include th-assert(
+    $describe: "Convert 2.35em to px.",
+    $expect: 42.3px,
+    $actual: _th-unit-convert-px(2.35em)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Convert 2.35em to px with base font size of 22px.",
+    $expect: 51.7px,
+    $actual: _th-unit-convert-px(2.35em, 22px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+}
