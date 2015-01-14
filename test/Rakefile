@@ -1,5 +1,5 @@
 desc 'Run Tests'
-task :default do
+task :test do
 	puts 'Compile sass tests...'
 	system 'bundle exec compass compile'
 	puts 'Diff sass tests...'
