@@ -49,7 +49,7 @@ $th-units-absolute: (px,);
 
 // @function _th-unit-convert-absolute
 //
-// Converts a number to an absolute number.
+// Converts a relative number to an absolute number.
 // @access private
 // @param $number: number | The number to convert.
 // @param $unit: string | The type of absolute unit.
