@@ -37,7 +37,7 @@ $th-units-absolute: (px,);
 	}
 	$_return: $property-value;
 	$unit: _th-unit-get($property-name);
-	@if not $unit {
+	@if not $unit or $unit == unit($property-value) {
 		@return $_return;
 	}
 	$function: _th-unit-convert-#{$unit};
