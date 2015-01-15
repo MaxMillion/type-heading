@@ -46,6 +46,26 @@ function th-math-power {
 
 }
 
+// th-math-round-to()
+// ------------------------------
+
+function th-math-round-to {
+
+  @include th-assert(
+    $describe: "Round 5.0246 to 3 decimal places",
+    $expect: 5.025,
+    $actual: th-math-round-to(5.0246, 3)
+  ){
+    @include th-assert-expect {
+      boolean: $expect;
+    }
+    @include th-assert-actual {
+      boolean: $actual;
+    }
+  }
+
+}
+
 // th-list-has-index()
 // ------------------------------
 
@@ -79,15 +99,48 @@ function th-list-has-index {
 
 }
 
-// th-math-power()
+// th-list-get-index()
 // ------------------------------
 
-function th-math-round-to {
+function th-list-get-index {
 
   @include th-assert(
-    $describe: "Round 5.0246 to 3 decimal places",
-    $expect: 5.025,
-    $actual: th-math-round-to(5.0246, 3)
+    $describe: "Return the index of b in (a, b, c).",
+    $expect: 2,
+    $actual: th-list-get-index( (a, b, c), b )
+  ){
+    @include th-assert-expect {
+      boolean: $expect;
+    }
+    @include th-assert-actual {
+      boolean: $actual;
+    }
+  }
+
+}
+
+// th-list-get-index-deep()
+// ------------------------------
+
+function th-list-get-index-deep {
+
+  @include th-assert(
+    $describe: "Return the index of f in (a, b, (c, d, (e, f))).",
+    $expect: 3 3 2,
+    $actual: th-list-get-index-deep( (a, b, (c, d, (e, f))), f )
+  ){
+    @include th-assert-expect {
+      boolean: $expect;
+    }
+    @include th-assert-actual {
+      boolean: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Return the index of c in (a, b, c).",
+    $expect: 2,
+    $actual: th-list-get-index-deep( (a, b, c), b )
   ){
     @include th-assert-expect {
       boolean: $expect;

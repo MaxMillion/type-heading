@@ -28,7 +28,7 @@ $th-properties: (
   $convert: true
 ){
   $heading-list: th-heading-get($heading, $breakpoint);
-  $property-index: _th-property-index($property-name);
+  $property-index: th-list-get-index-deep($th-properties, $property-name);
   $_return: th-list-get-deep($heading-list, $property-index);
   @if $_return == default or $_return == false { 
     $_return: th-property-default($property-name, $base-font-size, false);
@@ -144,33 +144,6 @@ $th-properties: (
   $_return: false;
   @if th-list-deep-has($th-properties, $property-name) { 
     $_return: true;
-  }
-  @return $_return;
-}
-
-// @function _th-property-index()
-//
-// Return index of a property name.
-// @access private
-// @param $property-name: string | A property name (required). | $th-properties
-// @return $_return: mixed | Property name index.
-
-@function _th-property-index(
-  $property-name
-){
-  $_return: $property-name;
-  @each $property in $th-properties {
-    @if type-of($property) == list {
-      @each $property-inner in $property {
-        @if $property-inner == $property-name {
-          $property-index-outer: index($th-properties, $property);
-          $property-index-inner: index($property, $property-inner);
-          $_return: ($property-index-outer, $property-index-inner);
-        }
-      }
-    } @else if $property == $property-name {
-      $_return: index($th-properties, $property); 
-    }
   }
   @return $_return;
 }

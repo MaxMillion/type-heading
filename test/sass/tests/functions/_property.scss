@@ -309,39 +309,6 @@ function _th-property-name-exists {
 
 }
 
-// _th-property-index()
-// ------------------------------
-
-function _th-property-index {
-
-	@include th-assert(
-		$describe: "Return index of font-size property.",
-		$expect: 1,
-		$actual: _th-property-index(font-size)
-	){
-		@include th-assert-expect {
-			number: $expect;
-		}
-		@include th-assert-actual {
-			number: $actual;
-		}
-	}
-
-	@include th-assert(
-		$describe: "Return index of margin-bottom property.",
-		$expect: (3, 2),
-		$actual: _th-property-index(margin-bottom)
-	){
-		@include th-assert-expect {
-			map: $expect;
-		}
-		@include th-assert-actual {
-			map: $actual;
-		}
-	}
-
-}
-
 // _th-property-unit-get()
 // ------------------------------
 
