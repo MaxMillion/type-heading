@@ -212,9 +212,7 @@
   $strings: px em rem;
   $units: 1px 1em 1rem;
   $index: index($strings, $unit);
-  @if not $index {
-    @warn "Unknown unit `#{$unit}`.";
-  } @else {
+  @if $index {
     $_return: $number * nth($units, $index);
   }
   @return $_return;
