@@ -22,12 +22,12 @@ $th-headings: (
   h6: (12px)
   ) !default;
 
-// $th-defaults
+// $th-property-defaults
 //
 // Define default heading property values.
 // @type map
 
-$th-defaults: (
+$th-property-defaults: (
   font-size: 16px,
   line-height: 24px,
   margin-top: 20px,

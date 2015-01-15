@@ -15,7 +15,7 @@ $th-properties: (
 //
 // Return heading list property value.
 // @param $heading: mixed | A heading map key or list (required). | $th-headings
-// @param $property-name: string | A heading property name (required). | $th-defaults
+// @param $property-name: string | A heading property name (required). | $th-property-defaults
 // @param $breakpoint: number | A heading list breakpoint (optional). | $th-headings
 // @param $base-font-size: number | Number to calculate values from (optional).
 // @return $_return: number | Heading property value.
@@ -114,7 +114,7 @@ $th-properties: (
 // @function th-property-default()
 //
 // Return a default heading property value.
-// @param $property-name: string | A heading property name (required). | $th-defaults
+// @param $property-name: string | A heading property name (required). | $th-property-defaults
 // @param $base-font-size: number | Number to calculate values from (optional).
 // @return $_return: number | Default heading property value.
 
@@ -124,7 +124,7 @@ $th-properties: (
   $convert: true
 ){
   $_return: $property-name;
-  $_return: map-get($th-defaults, $property-name);
+  $_return: map-get($th-property-defaults, $property-name);
   @if $convert == true {
     $_return: _th-property-unit-convert($property-name, $_return, $base-font-size);
   }
