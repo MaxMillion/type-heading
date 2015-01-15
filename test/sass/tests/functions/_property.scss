@@ -341,3 +341,56 @@ function _th-property-index {
 	}
 
 }
+
+// _th-property-unit-get()
+// ------------------------------
+
+function _th-property-unit-get {
+
+  @include th-assert(
+    $describe: "Return convert to unit for a property.",
+    $expect: em,
+    $actual: _th-property-unit-get(font-size)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+}
+
+// _th-property-unit-convert()
+// ------------------------------
+
+function _th-property-unit-convert {
+
+  @include th-assert(
+    $describe: "Convert 10px font size to em.",
+    $expect: 0.55556em,
+    $actual: _th-property-unit-convert(font-size, 10px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Convert 10px font size with base font size of 20px.",
+    $expect: 0.5em,
+    $actual: _th-property-unit-convert(font-size, 10px, 20px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+}
