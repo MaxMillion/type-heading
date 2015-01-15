@@ -209,7 +209,7 @@
   $unit
 ){
   $_return: $number;
-  $strings: 'px' 'em' 'rem';
+  $strings: px em rem;
   $units: 1px 1em 1rem;
   $index: index($strings, $unit);
   @if not $index {
