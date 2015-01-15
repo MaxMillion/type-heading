@@ -185,15 +185,15 @@ function th-list-has {
 
 }
 
-// th-list-deep-has()
+// th-list-has-deep()
 // ------------------------------
 
-function th-list-deep-has {
+function th-list-has-deep {
 
   @include th-assert(
     $describe: "Check list for a value.",
     $expect: true,
-    $actual: th-list-deep-has( (a, (b, c), d), a)
+    $actual: th-list-has-deep( (a, (b, c), d), a)
   ){
     @include th-assert-expect {
       boolean: $expect;
@@ -206,7 +206,7 @@ function th-list-deep-has {
   @include th-assert(
     $describe: "Check list for a deep value.",
     $expect: true,
-    $actual: th-list-deep-has( (a, (b, c), d), c)
+    $actual: th-list-has-deep( (a, (b, c), d), c)
   ){
     @include th-assert-expect {
       boolean: $expect;
@@ -219,7 +219,7 @@ function th-list-deep-has {
   @include th-assert(
     $describe: "Check list for a deep value that doesnt exist.",
     $expect: false,
-    $actual: th-list-deep-has( (a, (b, c), d), e)
+    $actual: th-list-has-deep( (a, (b, c), d), e)
   ){
     @include th-assert-expect {
       boolean: $expect;

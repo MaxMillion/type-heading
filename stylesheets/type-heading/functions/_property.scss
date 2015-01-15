@@ -142,7 +142,7 @@ $th-properties: (
   $property-name
 ){
   $_return: false;
-  @if th-list-deep-has($th-properties, $property-name) { 
+  @if th-list-has-deep($th-properties, $property-name) { 
     $_return: true;
   }
   @return $_return;
