@@ -179,14 +179,14 @@ $th-properties: (
 //
 // Returns a property's "convert to" unit.
 // @access private
-// @param $property-name: string | A heading property name (required). | $th-units
+// @param $property-name: string | A heading property name (required). | $th-property-units
 // @param $_return: number | Propertie's "convert to" unit.
 
 @function _th-property-unit-get(
   $property-name
 ){
   $_return: $property-name;
-  $_return: map-get($th-units, $property-name);
+  $_return: map-get($th-property-units, $property-name);
   @return $_return;
 }
 
@@ -194,7 +194,7 @@ $th-properties: (
 //
 // Returns a property's "converted" value.
 // @access private
-// @param $property-name: string | A heading property name (required). | $th-units
+// @param $property-name: string | A heading property name (required). | $th-property-units
 // @param $value: number | number | A "to convert" value.
 // @param $base-font-size: number | Font size used for relative calculations.
 // @return $_return: number | A "converted" value.
@@ -204,7 +204,7 @@ $th-properties: (
   $property-value,
   $base-font-size: $th-base-font-size
 ){
-  @if not map-has-key($th-units, $property-name) {
+  @if not map-has-key($th-property-units, $property-name) {
     @return $property-value;
   }
   $_return: $property-value;

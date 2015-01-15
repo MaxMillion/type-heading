@@ -34,12 +34,12 @@ $th-property-defaults: (
   margin-bottom: 20px
   ) !default;
 
-// $th-units
+// $th-property-units
 //
 // Define heading property value units. | em, rem, px, rel, false |
 // @type map
 
-$th-units: (
+$th-property-units: (
   font-size: px,
   line-height: rel,
   margin-top: em,
