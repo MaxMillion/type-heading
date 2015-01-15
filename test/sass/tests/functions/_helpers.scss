@@ -152,35 +152,34 @@ function th-list-get-index-deep {
 
 }
 
-// th-list-get-deep()
+// th-list-has()
 // ------------------------------
 
-function th-list-get-deep {
+function th-list-has {
 
   @include th-assert(
-    $describe: "Get a value from a list by index.",
-    $expect: 40px,
-    $actual: th-list-get-deep( (10px, (20px, 30px), 40px), 3 )
+    $describe: "Check list for value x (exists).",
+    $expect: true,
+    $actual: th-list-has( (a, b, x), x )
   ){
     @include th-assert-expect {
-      number: $expect;
+      map: $expect;
     }
     @include th-assert-actual {
-      number: $actual;
+      map: $actual;
     }
   }
 
   @include th-assert(
-    $describe: "Get a value from a list by list of indexes.",
-    $expect: 30px,
-    $actual: th-list-get-deep( (10px, (20px, 30px)), (2, 2) ),
-    $warn: false
+    $describe: "Check list for value x (doesn't exist).",
+    $expect: false,
+    $actual: th-list-has( (a, b, c), x )
   ){
     @include th-assert-expect {
-      number: $expect;
+      map: $expect;
     }
     @include th-assert-actual {
-      number: $actual;
+      map: $actual;
     }
   }
 
@@ -232,34 +231,35 @@ function th-list-deep-has {
 
 }
 
-// th-list-has()
+// th-list-get-deep()
 // ------------------------------
 
-function th-list-has {
+function th-list-get-deep {
 
   @include th-assert(
-    $describe: "Check list for value x (exists).",
-    $expect: true,
-    $actual: th-list-has( (a, b, x), x )
+    $describe: "Get a value from a list by index.",
+    $expect: 40px,
+    $actual: th-list-get-deep( (10px, (20px, 30px), 40px), 3 )
   ){
     @include th-assert-expect {
-      map: $expect;
+      number: $expect;
     }
     @include th-assert-actual {
-      map: $actual;
+      number: $actual;
     }
   }
 
   @include th-assert(
-    $describe: "Check list for value x (doesn't exist).",
-    $expect: false,
-    $actual: th-list-has( (a, b, c), x )
+    $describe: "Get a value from a list by list of indexes.",
+    $expect: 30px,
+    $actual: th-list-get-deep( (10px, (20px, 30px)), (2, 2) ),
+    $warn: false
   ){
     @include th-assert-expect {
-      map: $expect;
+      number: $expect;
     }
     @include th-assert-actual {
-      map: $actual;
+      number: $actual;
     }
   }
 

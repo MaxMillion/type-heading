@@ -158,6 +158,50 @@
   @return $_return;
 }
 
+// @function th-list-has()
+//
+// Check list for a value.
+// @param $list: list | List to search (required).
+// @param $find: mixed | Value to find (required).
+// @return $_return: boolean | If list contains value.
+
+@function th-list-has(
+  $list,
+  $find
+){
+  $_return: false;
+  @each $value in $list {
+    @if $find == $value {
+      @return true;
+    }
+  }
+  @return $_return;
+}
+
+// @function th-list-deep-has()
+//
+// Check list for a value (recurring).
+// @param $list: list | List to search (required).
+// @param $find: mixed | Value to find (required).
+// @return $_return: boolean | If list contains value.
+
+@function th-list-deep-has(
+  $list,
+  $find
+){
+  $_return: false;
+  @each $value in $list {
+    @if list == type-of($value) {
+      $_return: th-list-deep-has($value, $find);
+    } @else {
+      @if $find == $value {
+        @return true;
+      }
+    }
+  }
+  @return $_return;
+}
+
 // @function th-list-get-deep
 //
 // Gets a value within lists by a list of indexes (recurring).
@@ -187,50 +231,6 @@
   }
   $_return: $list;
   @return $_return;
-}
-
-// @function th-list-has()
-//
-// Check list for a value.
-// @param $list: list | List to search (required).
-// @param $find: mixed | Value to find (required).
-// @return $_return: boolean | If list contains value.
-
-@function th-list-has(
-  $list,
-  $find
-){
-  $_return: false;
-  @each $value in $list {
-    @if $find == $value {
-      @return true;
-    }
-  }
-  @return $_return;
-}
-
-// @function th-list-deep-has()
-//
-// Check list for a value (recurring).
-// @param $list: list | List to search (required).
-// @param $find: mixed | Value to find (required).
-// @return $_return: boolean | If list contains value.
-
-@function th-list-deep-has(
-	$list,
-	$find
-){
-	$_return: false;
-	@each $value in $list {
-		@if list == type-of($value) {
-			$_return: th-list-deep-has($value, $find);
-		} @else {
-			@if $find == $value {
-				@return true;
-			}
-		}
-	}
-	@return $_return;
 }
 
 // @function th-list-remove-nth
