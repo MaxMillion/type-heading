@@ -12,7 +12,6 @@
 <th>Description</th>
 <th>Since</th>
 <th>Group</th>
-<th>Access</th>
 </tr>
 </thead>
 <tbody>
@@ -20,8 +19,7 @@
 <td>Mixin</td>
 <td>{{mixin.description}}</td>
 <td>{{mixin.since}}</td>
-<td>{{mixin.category}}</td>
-<td>{{mixin.access}}</td>
+<td>{{mixin.group}}</td>
 </tr>
 </tbody>
 </table>
@@ -60,29 +58,6 @@
 {% endfor %}
 </tr>
 {% endfor %}
-</tbody>
-</table>
-</section>
-<section class="doc-section doc-section-return">
-<h5 class="doc-section-title">Return</h5>
-<table class="doc-return">
-<thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-{% for return in mixin.return %}
-{% if return.type %}
-<td>{{return.type}}</td>
-{% endif %}
-{% if return.description %}
-<td>{{return.description}}</td>
-{% endif %}
-{% endfor %}
-</tr>
 </tbody>
 </table>
 </section>
