@@ -1,6 +1,6 @@
-<article class="doc doc-function">
+<article class="doc doc-mixin">
 <header class="doc-header">
-<h4>{{function.name}}</h4>
+<h4 class="doc-title">{{mixin.name}}</h4>
 </header>
 <div class="doc-content">
 <section class="doc-section doc-section-details">
@@ -17,11 +17,11 @@
 </thead>
 <tbody>
 <tr>
-<td>Function</td>
-<td>{{function.description}}</td>
-<td>{{function.since}}</td>
-<td>{{function.category}}</td>
-<td>{{function.access}}</td>
+<td>Mixin</td>
+<td>{{mixin.description}}</td>
+<td>{{mixin.since}}</td>
+<td>{{mixin.category}}</td>
+<td>{{mixin.access}}</td>
 </tr>
 </tbody>
 </table>
@@ -39,7 +39,7 @@
 </tr>
 </thead>
 <tbody>
-{% for params in function.params %}
+{% for params in mixin.params %}
 <tr>
 {% for param in params %}
 <td>${{param[0]}}</td>
@@ -74,7 +74,7 @@
 </thead>
 <tbody>
 <tr>
-{% for return in function.return %}
+{% for return in mixin.return %}
 {% if return.type %}
 <td>{{return.type}}</td>
 {% endif %}
@@ -87,7 +87,7 @@
 </table>
 </section>
 <section class="doc-section doc-section-content">
-{{function.content}}
+{{mixin.content}}
 </section>
 </div>
 </article>

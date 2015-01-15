@@ -8,6 +8,8 @@ twitter_username: ellioseven
 github_username:  ellioseven
 collections:
 - functions
+- mixins
+- settings
 exclude: [
 	'config.rb',
 	'Gemfile',
