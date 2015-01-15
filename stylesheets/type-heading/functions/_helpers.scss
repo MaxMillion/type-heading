@@ -87,6 +87,77 @@
   @return $_return;
 }
 
+// th-list-get-index
+// Return the index of a value in a list.
+//
+// @since 0.0.11
+// @type Function
+// @group helpers
+//
+// @param {List} $list The list to search through.
+// @param {Number|String} $find The value to find. 
+//
+// @returns {Number} The index of the found value.
+//
+// @example scss Get the index of b in (a, b, c).
+// // th-list-get-index( (a, b, c), b )
+// // // 2
+
+@function th-list-get-index(
+  $list,
+  $find
+){
+  $_return: $find;
+  @each $value in $list {
+    @if $find == $value {
+      $_return: index($list, $value);
+    }
+  }
+  @return $_return;
+}
+
+// th-list-get-index-deep
+// Return the index of a value within multiple lists.
+//
+// @since 0.0.11
+// @type Function
+// @group helpers
+//
+// @see {function} th-list-has
+//
+// @param {List} $list The list to search through.
+// @param {Number|String} $find The value to find.
+//
+// @returns {List} The index of the found value.
+//
+// @example scss Get the index of f in (a, b, (c, d, (e, f))).
+// // th-list-get-index-deep( (a, b, (c, d, (e, f))), f )
+// // // 3, 3, 2
+
+@function th-list-get-index-deep(
+  $list,
+  $find,
+  $indexes: ()
+){
+  $_return: $find;
+  $index: 0;
+  @if th-list-has($list, $find) {
+    @if length($indexes) > 0 {
+      $_return: append($indexes, index($list, $find));
+    } @else {
+      $_return: index($list, $find);
+    }
+  } @else {
+    @each $value in $list {
+      $index: $index + 1;
+      @if type-of($value) == list {
+        $_return: th-list-get-index-deep($value, $find, append($indexes, $index));
+      }
+    }
+  }
+  @return $_return;
+}
+
 // @function th-list-get-deep
 //
 // Gets a value within lists by a list of indexes (recurring).
