@@ -1,5 +1,7 @@
-// Functions / Helpers
-
+// Helpers
+// 
+// @group Functions / Helpers
+// @author Elliot Mitchum
 
 // Math
 // ------------------------------
@@ -9,12 +11,11 @@
 //
 // @since 0.0.11
 // @type function
-// @group helpers
 //
-// @param {Number} $number The base number. 
-// @param {Number} $exponent The base number's exponent. 
+// @param {number} $number The base number (required). 
+// @param {number} $exponent The base number's exponent (required). 
 //
-// @returns {Number} The powered number.
+// @returns {number} The powered number.
 //
 // @example scss Calculate 10 to the power of 3.
 // // th-math-power(10, 3)
@@ -41,16 +42,15 @@
 // th-math-round-to
 // Returns a floated number rounded to a decimal point.
 //
-// @since 0.0.10
+// @since 0.0.11
 // @type function
-// @group helpers
 //
-// @see {function} th-math-power
+// @requires {function} th-math-power
 //
-// @param {Number} $number The number to round from.
-// @param {Float} $decimal The decimal place to round to.
+// @param {number} $number The number to round from (required).
+// @param {number} $decimal The decimal place to round to (required).
 //
-// @returns {Number} The rounded number.
+// @returns {number} The rounded number.
 //
 // @example scss Round 1.234 to 2 decimal places.
 // // th-math-round-to(1.234, 2)
@@ -69,12 +69,20 @@
 // Lists
 // ------------------------------
 
-// @function th-list-has-index()
-//
+// th-list-has-index
 // Check list for a index.
-// @param $list: list | List to search (required).
-// @param $index: number | List index to find (required).
-// @return $_return: boolean | If list contains index.
+//
+// @since 0.0.1
+// @type function
+//
+// @param {list} $list List to search (required).
+// @param {number} $index The list index to retrieve (required). 
+//
+// @returns {boolean} If list contains index.
+//
+// @example scss Check list for 2nd index.
+// // @debug th-list-has-index((a, b, c), 2);
+// // // true
 
 @function th-list-has-index(
   $list,
@@ -88,18 +96,17 @@
 }
 
 // th-list-get-index
-// Return the index of a value in a list.
+// Return the index of a value in a list..
 //
 // @since 0.0.11
 // @type Function
-// @group helpers
 //
-// @param {List} $list The list to search through.
-// @param {Number|String} $find The value to find. 
+// @param {list} $list The list to search through (required).
+// @param {number | string} $find The value to find (required).
 //
-// @returns {Number} The index of the found value.
+// @returns {number} The index of the found value.
 //
-// @example scss Get the index of b in (a, b, c).
+// @example scss Get the index of 'b' in (a, b, c).
 // // th-list-get-index( (a, b, c), b )
 // // // 2
 
@@ -120,19 +127,19 @@
 // Return the index of a value within multiple lists.
 //
 // @since 0.0.11
-// @type Function
-// @group helpers
+// @type function
 //
-// @see {function} th-list-has
+// @requires {function} th-list-has
 //
-// @param {List} $list The list to search through.
-// @param {Number|String} $find The value to find.
+// @param {list} $list The list to search through (required).
+// @param {number | string} $find The value to find (required).
+// @param {list} $indexes List of previous indexes.
 //
-// @returns {List} The index of the found value.
+// @returns {list} The index of the found value.
 //
-// @example scss Get the index of f in (a, b, (c, d, (e, f))).
+// @example scss Get the index of 'f' in (a, b, (c, d, (e, f))).
 // // th-list-get-index-deep( (a, b, (c, d, (e, f))), f )
-// // // 3, 3, 2
+// // // 3 3 2
 
 @function th-list-get-index-deep(
   $list,
@@ -158,12 +165,20 @@
   @return $_return;
 }
 
-// @function th-list-has()
-//
+// th-list-has
 // Check list for a value.
-// @param $list: list | List to search (required).
-// @param $find: mixed | Value to find (required).
-// @return $_return: boolean | If list contains value.
+//
+// @since 0.0.1
+// @type function
+//
+// @param {list} $list List to search (required).
+// @param {number | string} $find Value to find (required). 
+//
+// @returns {boolean} If list contains value.
+//
+// @example scss Check list for 'b'.
+// // th-list-has((a b c), b);
+// // // true
 
 @function th-list-has(
   $list,
@@ -178,12 +193,20 @@
   @return $_return;
 }
 
-// @function th-list-has-deep()
-//
+// th-list-has-deep
 // Check list for a value (recurring).
-// @param $list: list | List to search (required).
-// @param $find: mixed | Value to find (required).
-// @return $_return: boolean | If list contains value.
+//
+// @since 0.0.10
+// @type function
+//
+// @param {list} $list List to search (required). 
+// @param {number | string} $find Value to find (required). 
+//
+// @returns {boolean} If list contains value.
+//
+// @example scss Check for 'f' in (a b (c d (e f))).
+// // th-list-has-deep((a b (c d (e f))), f)
+// // // true
 
 @function th-list-has-deep(
   $list,
@@ -202,9 +225,27 @@
   @return $_return;
 }
 
+// th-list-get-deep
+// Returns a value within lists by a list of indexes (recurring).
+//
+// @since 0.0.10
+// @type function
+//
+// @requires {function} th-list-has-index
+// @requires {function} th-list-get-deep
+//
+// @param {list} $list List to search (required). 
+// @param {list} $index List indexes to run (required).
+//
+// @returns {number | string} The found list value.
+//
+// @example scss Return 'f' in (a b (c d (e f))).
+// // (example)
+// // // (result)
+
 // @function th-list-get-deep
 //
-// Gets a value within lists by a list of indexes (recurring).
+// Returns a value within lists by a list of indexes (recurring).
 // @param $list: list | List to search (required).
 // @param $index: mixed | List index(es) to find (required).
 // @return $_return: mixed | List value to found.
