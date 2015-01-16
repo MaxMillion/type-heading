@@ -240,15 +240,8 @@
 // @returns {number | string} The found list value.
 //
 // @example scss Return 'f' in (a b (c d (e f))).
-// // (example)
-// // // (result)
-
-// @function th-list-get-deep
-//
-// Returns a value within lists by a list of indexes (recurring).
-// @param $list: list | List to search (required).
-// @param $index: mixed | List index(es) to find (required).
-// @return $_return: mixed | List value to found.
+// // th-list-get-deep((a b (c d (e f))), (3 3 2))
+// // // f
 
 @function th-list-get-deep(
   $list,
@@ -285,9 +278,10 @@
   $index
 ){
   $_return: ();
-  @each $value in $list {
-    @if $index != index($list, $value) {
-      $_return: append($_return, $value);
+  $index: if($index < 0, length($list) + $index + 1, $index);  
+  @for $i from 1 through length($list) {
+    @if $i != $index {
+      $_return: append($_return, nth($list, $i));
     }
   }
   @return $_return;
