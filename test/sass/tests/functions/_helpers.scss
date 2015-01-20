@@ -231,26 +231,6 @@ function th-list-has-deep {
 
 }
 
-// th-list-remove-nth()
-// ------------------------------
-
-function th-list-remove-nth {
-
-  @include th-assert(
-    $describe: "Remove an item from a list by index.",
-    $expect: a b c,
-    $actual: th-list-remove-nth( (a, b, c, d), 4 )
-  ){
-    @include th-assert-expect {
-      map: $expect;
-    }
-    @include th-assert-actual {
-      map: $actual;
-    }
-  }
-
-}
-
 // th-unit-strip()
 // ------------------------------
 

@@ -225,26 +225,6 @@
   @return $_return;
 }
 
-// @function th-list-remove-nth
-// 
-// Removes a list item by it's index / nth.
-// @param $list: list | List to search (required).
-// @param $index: mixed | List index(es) to find (required).
-
-@function th-list-remove-nth(
-  $list,
-  $index
-){
-  $_return: ();
-  $index: if($index < 0, length($list) + $index + 1, $index);  
-  @for $i from 1 through length($list) {
-    @if $i != $index {
-      $_return: append($_return, nth($list, $i));
-    }
-  }
-  @return $_return;
-}
-
 // Units
 // ------------------------------
 
