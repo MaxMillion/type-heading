@@ -95,34 +95,6 @@
   @return $_return;
 }
 
-// th-list-get-index
-// Return the index of a value in a list..
-//
-// @since 0.0.11
-// @type Function
-//
-// @param {list} $list The list to search through (required).
-// @param {number | string} $find The value to find (required).
-//
-// @returns {number} The index of the found value.
-//
-// @example scss Get the index of 'b' in (a, b, c).
-// // th-list-get-index( (a, b, c), b )
-// // // 2
-
-@function th-list-get-index(
-  $list,
-  $find
-){
-  $_return: $find;
-  @each $value in $list {
-    @if $find == $value {
-      $_return: index($list, $value);
-    }
-  }
-  @return $_return;
-}
-
 // th-list-get-index-deep
 // Return the index of a value within multiple lists.
 //
