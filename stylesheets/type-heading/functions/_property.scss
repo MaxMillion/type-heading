@@ -29,12 +29,32 @@ $th-properties: (
 ){
   $heading-list: th-heading-get($heading, $breakpoint);
   $property-index: th-list-get-index-deep($th-properties, $property-name);
-  $_return: th-list-get-deep($heading-list, $property-index);
+  $_return: th-property-get($heading-list, $property-index);
   @if $_return == default or $_return == false { 
     $_return: th-property-default($property-name, $base-font-size, false);
   }
   @if $convert == true {
     $_return: _th-property-unit-convert($property-name, $_return, $base-font-size);
+  }
+  @return $_return;
+}
+
+@function th-property-get(
+  $heading,
+  $property-indexes
+  ){
+  $_return: false;
+  @if list == type-of($heading) {
+    $_return: $heading;
+    @for $i from 1 through length($property-indexes) {
+      @if th-list-has-index($_return, nth($property-indexes, $i)) {
+        $_return: nth($_return, nth($property-indexes, $i));
+      } @else if $i == 1 {
+        $_return: false;
+      }
+    }
+  } @else if $property-indexes == 1 {
+    $_return: $heading;
   }
   @return $_return;
 }

@@ -127,7 +127,10 @@
   $heading: th-heading-get-map($heading);
   @if $breakpoint {
     @each $heading-list in $heading {
-      @if th-property($heading: $heading-list, $property-name: breakpoint, $convert: false) == $breakpoint {
+      @if th-property(
+        $heading: $heading-list,
+        $property-name: breakpoint,
+        $convert: false) == $breakpoint {
         $_return: $heading-list;
       }
     }

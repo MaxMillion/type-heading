@@ -225,48 +225,6 @@
   @return $_return;
 }
 
-// th-list-get-deep
-// Returns a value within lists by a list of indexes (recurring).
-//
-// @since 0.0.10
-// @type function
-//
-// @requires {function} th-list-has-index
-// @requires {function} th-list-get-deep
-//
-// @param {list} $list List to search (required). 
-// @param {list} $index List indexes to run (required).
-//
-// @returns {number | string} The found list value.
-//
-// @example scss Return 'f' in (a b (c d (e f))).
-// // th-list-get-deep((a b (c d (e f))), (3 3 2))
-// // // f
-
-@function th-list-get-deep(
-  $list,
-  $index
-){
-  $_return: false;
-  $indexes: false;
-  @if list == type-of($index) {
-    $indexes: $index;
-    $index: nth($index, 1);
-  }
-  @if th-list-has-index($list, $index) { 
-    $list: nth($list, $index);
-    @if list == type-of($list) and $indexes {
-      $list: th-list-get-deep($list, nth($indexes, 2));
-    }
-  } @else if( list != type-of($list) and $index == 1 ) {
-    $list: $list;
-  } @else {
-    $list: false;
-  }
-  $_return: $list;
-  @return $_return;
-}
-
 // @function th-list-remove-nth
 // 
 // Removes a list item by it's index / nth.
