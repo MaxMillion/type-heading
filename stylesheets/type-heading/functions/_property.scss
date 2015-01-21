@@ -348,21 +348,6 @@ $th-properties: (
   @return $_return;
 }
 
-// @function _th-property-unit-get
-//
-// Returns a property's "convert to" unit.
-// @access private
-// @param $property-name: string | A heading property name (required). | $th-property-units
-// @param $_return: number | Propertie's "convert to" unit.
-
-@function _th-property-unit-get(
-  $property-name
-){
-  $_return: $property-name;
-  $_return: map-get($th-property-units, $property-name);
-  @return $_return;
-}
-
 // @function _th-property-unit-convert
 //
 // Returns a property's "converted" value.
@@ -381,7 +366,7 @@ $th-properties: (
     @return $property-value;
   }
   $_return: $property-value;
-  $unit: _th-property-unit-get($property-name);
+  $unit: map-get($th-property-units, $property-name);
   @if not $unit or $unit == unit($property-value) {
     @return $_return;
   }

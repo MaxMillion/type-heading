@@ -276,26 +276,6 @@ function th-property-default {
 
 }
 
-// _th-property-unit-get()
-// ------------------------------
-
-function _th-property-unit-get {
-
-  @include th-assert(
-    $describe: "Return convert to unit for a property.",
-    $expect: em,
-    $actual: _th-property-unit-get(font-size)
-  ){
-    @include th-assert-expect {
-      font-size: $expect;
-    }
-    @include th-assert-actual {
-      font-size: $actual;
-    }
-  }
-
-}
-
 // _th-property-unit-convert()
 // ------------------------------
 
