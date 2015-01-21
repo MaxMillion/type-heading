@@ -12,7 +12,11 @@
 	$breakpoint: false,
 	$base-font-size: $th-base-font-size
 ){
-	font-size: th-property-font-size($heading, $breakpoint, $base-font-size);
+	font-size: th-property-font-size(
+		$heading: $heading,
+		$breakpoint: $breakpoint,
+		$base-font-size: $base-font-size
+	);
 }
 
 // @mixin th-property-line-height
@@ -27,7 +31,11 @@
 	$breakpoint: false,
 	$base-font-size: $th-base-font-size
 ){
-	line-height: th-property-line-height($heading, $breakpoint, $base-font-size);
+	line-height: th-property-line-height(
+		$heading: $heading,
+		$breakpoint: $breakpoint,
+		$base-font-size: $base-font-size
+	);
 }
 
 // @mixin th-property-margin-top
@@ -42,7 +50,11 @@
 	$breakpoint: false,
 	$base-font-size: $th-base-font-size
 ){
-	margin-top: th-property-margin-top($heading, $breakpoint, $base-font-size);
+	margin-top: th-property-margin-top(
+		$heading: $heading,
+		$breakpoint: $breakpoint,
+		$base-font-size: $base-font-size
+	);
 }
 
 // @mixin th-property-margin-bottom
@@ -57,5 +69,9 @@
 	$breakpoint: false,
 	$base-font-size: $th-base-font-size
 ){
-	margin-bottom: th-property-margin-bottom($heading, $breakpoint, $base-font-size);
+	margin-bottom: th-property-margin-bottom(
+		$heading: $heading,
+		$breakpoint: $breakpoint,
+		$base-font-size: $base-font-size
+	);
 }
