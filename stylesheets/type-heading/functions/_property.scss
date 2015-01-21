@@ -18,20 +18,19 @@ $th-properties: (
 );
 
 // th-property
-// Return heading list property value.
+// Return heading list property value wrapper.
 //
 // @since 0.0.10
 // @type function
 //
 // @requires {function} th-heading-get
-// @requires {function} th-list-get-index-deep
 // @requires {function} th-property-get
 // @requires {function} th-property-default
 // @requires {function} _th-property-unit-convert
 //
 // @param {list | string} $heading A heading map key or list (required).
 // @param {string} $property-name (font-size | line-height | margin-top | margin-bottom | breakpoint) A heading property name (required).
-// @param {number | boolean} A heading list breakpoint.
+// @param {number | boolean} $breakpoint (false) A heading list breakpoint.
 // @param {boolean} $convert (true) If returned value should be unit converted.
 // @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
 //
@@ -68,9 +67,9 @@ $th-properties: (
   $convert: true,
   $base-font-size: $th-base-font-size
 ){
+  $_return: false;
   $heading-list: th-heading-get($heading, $breakpoint);
-  $property-index: th-list-get-index-deep($th-properties, $property-name);
-  $_return: th-property-get($heading-list, $property-index);
+  $_return: _th-property-get($heading-list, $property-name);
   @if $_return == default or $_return == false { 
     $_return: th-property-default($property-name, $base-font-size, false);
   }
@@ -80,11 +79,30 @@ $th-properties: (
   @return $_return;
 }
 
-@function th-property-get(
+// th-property-get
+// Return heading list property value.
+//
+// @since 0.0.11
+// @type function
+// @access private
+//
+// @requires th-list-get-index-deep
+// @requires th-list-has-index
+//
+// @param {list | string} $heading A heading map key or list (required).
+// @param {string} $property-name (font-size | line-height | margin-top | margin-bottom | breakpoint) A heading property name (required).
+//
+// @returns {number} The heading property value.
+//
+// @example scss Return font size from a heading.
+// // _th-property-get(h1, font-size)
+
+@function _th-property-get(
   $heading,
-  $property-indexes
+  $property-name
   ){
   $_return: false;
+  $property-indexes: th-list-get-index-deep($th-properties, $property-name);
   @if list == type-of($heading) {
     $_return: $heading;
     @for $i from 1 through length($property-indexes) {
@@ -100,19 +118,44 @@ $th-properties: (
   @return $_return;
 }
 
-// @function th-property-font-size
-// 
-// Return heading list font size property value.
-// @param $heading: mixed | A heading map key or list (required). | $th-headings
-// @param $breakpoint: number | A heading list breakpoint (optional). | $th-headings
-// @param $base-font-size: number | Number to calculate values from (optional).
-// @return $_return: number | Heading list font size property value.
+// th-property-font-size
+// Return heading font size value.
+//
+// @since 0.0.10
+// @type function
+//
+// @requires th-property
+//
+// @param {list | string} $heading A heading map key or list (required).
+// @param {number | boolean} $breakpoint (false) A heading list breakpoint.
+// @param {boolean} $convert (true) If returned value should be unit converted.
+// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
+//
+// @returns {number} The heading font size value.
+//
+// @example scss Return font size from a h1 heading map.
+// // th-property-font-size(h1)
+// @example scss Return font size from a h1 heading map with a breakpoint of 768px.
+// // th-property-font-size(
+// //   $heading: h1,
+// //   $breakpoint: 768px
+// // )
+// @example scss Return font size from a h1 heading map without unit conversion.
+// // th-property-font-size(
+// //   $heading: h1,
+// //   $convert: false
+// // )
+// @example scss Return font size from a h1 with a base font size of 24px.
+// // th-property-font-size(
+// //   $heading: h1,
+// //   $base-font-size: 24px
+// // )
 
 @function th-property-font-size(
   $heading,
   $breakpoint: false,
-  $base-font-size: $th-base-font-size,
-  $convert: true
+  $convert: true,
+  $base-font-size: $th-base-font-size
 ){
   $_return: th-property(
     $heading: $heading,
@@ -124,13 +167,38 @@ $th-properties: (
   @return $_return;
 }
 
-// @function th-property-line-height
-// 
-// Return heading list line height property value.
-// @param $heading: mixed | A heading map key or list (required). | $th-headings
-// @param $breakpoint: number | A heading list breakpoint (optional). | $th-headings
-// @param $base-font-size: number | Number to calculate values from (optional).
-// @return $_return: number | Heading list line height property value.
+// th-property-line-height
+// Return heading line height value.
+//
+// @since 0.0.10
+// @type function
+//
+// @requires th-property
+//
+// @param {list | string} $heading A heading map key or list (required).
+// @param {number | boolean} $breakpoint (false) A heading list breakpoint.
+// @param {boolean} $convert (true) If returned value should be unit converted.
+// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
+//
+// @returns {number} The heading line height value.
+//
+// @example scss Return line height from a h1 heading map.
+// // th-property-line-height(h1)
+// @example scss Return line height from a h1 heading map with a breakpoint of 768px.
+// // th-property-line-height(
+// //   $heading: h1,
+// //   $breakpoint: 768px
+// // )
+// @example scss Return line height from a h1 heading map without unit conversion.
+// // th-property-line-height(
+// //   $heading: h1,
+// //   $convert: false
+// // )
+// @example scss Return line height from a h1 with a base font size of 24px.
+// // th-property-line-height(
+// //   $heading: h1,
+// //   $base-font-size: 24px
+// // )
 
 @function th-property-line-height(
   $heading,
@@ -148,13 +216,38 @@ $th-properties: (
   @return $_return;
 }
 
-// @function th-property-margin-top
-// 
-// Return heading list margin top property value.
-// @param $heading: mixed | A heading map key or list (required). | $th-headings
-// @param $breakpoint: number | A heading list breakpoint (optional). | $th-headings
-// @param $base-font-size: number | Number to calculate values from (optional).
-// @return $_return: number | Heading list margin top property value.
+// th-property-margin-top
+// Return heading margin top value.
+//
+// @since 0.0.10
+// @type function
+//
+// @requires th-property
+//
+// @param {list | string} $heading A heading map key or list (required).
+// @param {number | boolean} $breakpoint (false) A heading list breakpoint.
+// @param {boolean} $convert (true) If returned value should be unit converted.
+// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
+//
+// @returns {number} The heading margin top value.
+//
+// @example scss Return margin top from a h1 heading map.
+// // th-property-margin-top(h1)
+// @example scss Return margin top from a h1 heading map with a breakpoint of 768px.
+// // th-property-margin-top(
+// //   $heading: h1,
+// //   $breakpoint: 768px
+// // )
+// @example scss Return margin top from a h1 heading map without unit conversion.
+// // th-property-margin-top(
+// //   $heading: h1,
+// //   $convert: false
+// // )
+// @example scss Return margin top from a h1 with a base font size of 24px.
+// // th-property-margin-top(
+// //   $heading: h1,
+// //   $base-font-size: 24px
+// // )
 
 @function th-property-margin-top(
   $heading,
@@ -172,13 +265,38 @@ $th-properties: (
   @return $_return;
 }
 
-// @function th-property-margin-bottom
-// 
-// Return heading list margin bottom property value.
-// @param $heading: mixed | A heading map key or list (required). | $th-headings
-// @param $breakpoint: number | A heading list breakpoint (optional). | $th-headings
-// @param $base-font-size: number | Number to calculate values from (optional).
-// @return $_return: number | Heading list margin bottom property value.
+// th-property-margin-bottom
+// Return heading margin bottom value.
+//
+// @since 0.0.10
+// @type function
+//
+// @requires th-property
+//
+// @param {list | string} $heading A heading map key or list (required).
+// @param {number | boolean} $breakpoint (false) A heading list breakpoint.
+// @param {boolean} $convert (true) If returned value should be unit converted.
+// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
+//
+// @returns {number} The heading margin bottom value.
+//
+// @example scss Return margin bottom from a h1 heading map.
+// // th-property-margin-bottom(h1)
+// @example scss Return margin bottom from a h1 heading map with a breakpoint of 768px.
+// // th-property-margin-bottom(
+// //   $heading: h1,
+// //   $breakpoint: 768px
+// // )
+// @example scss Return margin bottom from a h1 heading map without unit conversion.
+// // th-property-margin-bottom(
+// //   $heading: h1,
+// //   $convert: false
+// // )
+// @example scss Return margin bottom from a h1 with a base font size of 24px.
+// // th-property-margin-bottom(
+// //   $heading: h1,
+// //   $base-font-size: 24px
+// // )
 
 @function th-property-margin-bottom(
   $heading,
