@@ -314,22 +314,36 @@ $th-properties: (
   @return $_return;
 }
 
-// @function th-property-default()
+// th-property-default
+// Return default property value.
 //
-// Return a default heading property value.
-// @param $property-name: string | A heading property name (required). | $th-property-defaults
-// @param $base-font-size: number | Number to calculate values from (optional).
-// @return $_return: number | Default heading property value.
+// @since 0.0.10
+// @type function
+//
+// @requires _th-property-unit-convert
+//
+// @param {string} $property-name (font-size | line-height | margin-top | margin-bottom | breakpoint) A property name (required).
+// @param {boolean} $convert (true) If returned value should be unit converted.
+// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
+//
+// @returns {number} Default property value.
+//
+// @example scss Get default font size.
+// // th-property-default(font-size)
 
 @function th-property-default(
   $property-name,
-  $base-font-size: $th-base-font-size,
-  $convert: true
+  $convert: true,
+  $base-font-size: $th-base-font-size
 ){
   $_return: $property-name;
   $_return: map-get($th-property-defaults, $property-name);
   @if $convert == true {
-    $_return: _th-property-unit-convert($property-name, $_return, $base-font-size);
+    $_return: _th-property-unit-convert(
+      $property-name: $property-name,
+      $property-value: $_return,
+      $base-font-size: $base-font-size
+    );
   }
   @return $_return;
 }
