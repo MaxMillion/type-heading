@@ -383,9 +383,6 @@ $th-properties: (
   $property-value,
   $base-font-size: $th-base-font-size
 ){
-  @if not map-has-key($th-property-units, $property-name) {
-    @return $property-value;
-  }
   $_return: $property-value;
   $unit: map-get($th-property-units, $property-name);
   @if not $unit or $unit == unit($property-value) {
