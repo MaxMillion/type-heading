@@ -276,39 +276,6 @@ function th-property-default {
 
 }
 
-// _th-property-name-exists()
-// ------------------------------
-
-function _th-property-name-exists {
-
-	@include th-assert(
-		$describe: "Check for 'font-size' property name.",
-		$expect: true,
-		$actual: _th-property-name-exists(font-size)
-	){
-		@include th-assert-expect {
-			font-size: $expect;
-		}
-		@include th-assert-actual {
-			font-size: $actual;
-		}
-	}
-
-	@include th-assert(
-		$describe: "Check for 'foo' property name.",
-		$expect: false,
-		$actual: _th-property-name-exists(foo)
-	){
-		@include th-assert-expect {
-			font-size: $expect;
-		}
-		@include th-assert-actual {
-			font-size: $actual;
-		}
-	}
-
-}
-
 // _th-property-unit-get()
 // ------------------------------
 

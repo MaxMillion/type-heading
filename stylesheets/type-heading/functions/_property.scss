@@ -334,23 +334,6 @@ $th-properties: (
   @return $_return;
 }
 
-// @function _th-property-name-exists()
-//
-// Check if a heading property name exists.
-// @access private
-// @param $property-name: string | A property name (required). | $th-properties
-// @param $_return: boolean | If property name exists.
-
-@function _th-property-name-exists(
-  $property-name
-){
-  $_return: false;
-  @if th-list-has-deep($th-properties, $property-name) { 
-    $_return: true;
-  }
-  @return $_return;
-}
-
 // @function _th-property-unit-get
 //
 // Returns a property's "convert to" unit.
