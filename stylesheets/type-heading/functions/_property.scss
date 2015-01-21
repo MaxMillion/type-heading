@@ -348,14 +348,35 @@ $th-properties: (
   @return $_return;
 }
 
-// @function _th-property-unit-convert
+// _th-property-unit-convert
+// Returns a property's converted unit value.
 //
-// Returns a property's "converted" value.
+// @since 0.0.11
+// @type function
 // @access private
-// @param $property-name: string | A heading property name (required). | $th-property-units
-// @param $value: number | number | A "to convert" value.
-// @param $base-font-size: number | Font size used for relative calculations.
-// @return $_return: number | A "converted" value.
+//
+// @requires th-unit-convert-em
+// @requires th-unit-convert-rem
+// @requires th-unit-convert-rel
+// @requires th-unit-convert-px
+//
+// @param {string} $property-name (font-size | line-height | margin-top | margin-bottom | breakpoint) A property name (required).
+// @param {number} $property-value The number value of the property (required). 
+// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
+//
+// @returns {number} The converted unit value.
+//
+// @example scss Convert heading font size of 14px.
+// // _th-property-unit-convert(
+// //   $property-name: font-size,
+// //   $property-value: 14px
+// // )
+// @example scss Convert heading font size of 14px with base font size of 20px.
+// // _th-property-unit-convert(
+// //   $property-name: font-size,
+// //   $property-value: 14px,
+// //   $base-font-size: 20px
+// // )
 
 @function _th-property-unit-convert(
   $property-name,
