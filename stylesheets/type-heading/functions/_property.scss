@@ -68,8 +68,8 @@ $th-properties: (
   $base-font-size: $th-base-font-size
 ){
   $_return: false;
-  $heading-list: th-heading-get($heading, $breakpoint);
-  $_return: _th-property-get($heading-list, $property-name);
+  $heading: th-heading-get($heading, $breakpoint);
+  $_return: _th-property-get($heading, $property-name);
   @if $_return == default or $_return == false { 
     $_return: th-property-default($property-name, $base-font-size, false);
   }
@@ -86,10 +86,10 @@ $th-properties: (
 // @type function
 // @access private
 //
-// @requires th-list-get-index-deep
-// @requires th-list-has-index
+// @requires {function} th-list-get-index-deep
+// @requires {function} th-list-has-index
 //
-// @param {list | string} $heading A heading map key or list (required).
+// @param {list} $heading A heading list (required).
 // @param {string} $property-name (font-size | line-height | margin-top | margin-bottom | breakpoint) A heading property name (required).
 //
 // @returns {number} The heading property value.

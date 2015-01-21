@@ -85,6 +85,78 @@ function th-property {
 
 }
 
+// _th-property-get()
+// ------------------------------
+
+function _th-property-get {
+
+	@include th-assert(
+		$describe: "Return font size property value.",
+		$expect: 10px,
+		$actual: _th-property-get((10px 20px 30px), font-size)
+	){
+		@include th-assert-expect {
+			font-size: $expect;
+		}
+		@include th-assert-actual {
+			font-size: $actual;
+		}
+	}
+
+	@include th-assert(
+		$describe: "Return margin top property value.",
+		$expect: 30px,
+		$actual: _th-property-get((10px 20px (30px 40px)), margin-top)
+	){
+		@include th-assert-expect {
+			margin-top: $expect;
+		}
+		@include th-assert-actual {
+			margin-top: $actual;
+		}
+	}
+
+	@include th-assert(
+		$describe: "Return margin bottom property value.",
+		$expect: 40px,
+		$actual: _th-property-get((10px 20px (30px 40px)), margin-bottom)
+	){
+		@include th-assert-expect {
+			margin-bottom: $expect;
+		}
+		@include th-assert-actual {
+			margin-bottom: $actual;
+		}
+	}
+
+	@include th-assert(
+		$describe: "Return missing value.",
+		$expect: false,
+		$actual: _th-property-get((10px 20px), margin-bottom)
+	){
+		@include th-assert-expect {
+			margin-bottom: $expect;
+		}
+		@include th-assert-actual {
+			margin-bottom: $actual;
+		}
+	}
+
+	@include th-assert(
+		$describe: "Return missing inner value.",
+		$expect: 30px,
+		$actual: _th-property-get((10px 20px 30px), margin-bottom)
+	){
+		@include th-assert-expect {
+			margin-bottom: $expect;
+		}
+		@include th-assert-actual {
+			margin-bottom: $actual;
+		}
+	}
+
+}
+
 // th-property-font-size()
 // ------------------------------
 
