@@ -20,7 +20,7 @@ $th-headings: (
   h4: (16px),
   h5: (14px),
   h6: (12px)
-  ) !default;
+) !default;
 
 // $th-property-defaults
 //
@@ -32,7 +32,7 @@ $th-property-defaults: (
   line-height: 24px,
   margin-top: 20px,
   margin-bottom: 20px
-  ) !default;
+) !default;
 
 // $th-property-units
 //
@@ -44,4 +44,4 @@ $th-property-units: (
   line-height: rel,
   margin-top: em,
   margin-bottom: em
-  ) !default;
+) !default;
