@@ -114,7 +114,13 @@ $th-properties: (
   $base-font-size: $th-base-font-size,
   $convert: true
 ){
-  $_return: th-property($heading, font-size, $breakpoint, $base-font-size, $convert);
+  $_return: th-property(
+    $heading: $heading,
+    $property-name: font-size,
+    $breakpoint: $breakpoint,
+    $convert: $convert,
+    $base-font-size: $base-font-size
+  );
   @return $_return;
 }
 
@@ -132,7 +138,13 @@ $th-properties: (
   $base-font-size: $th-base-font-size,
   $convert: true
 ){
-  $_return: th-property($heading, line-height, $breakpoint, $base-font-size, $convert);
+  $_return: th-property(
+    $heading: $heading,
+    $property-name: line-height,
+    $breakpoint: $breakpoint,
+    $convert: $convert,
+    $base-font-size: $base-font-size
+  );
   @return $_return;
 }
 
@@ -150,7 +162,13 @@ $th-properties: (
   $base-font-size: $th-base-font-size,
   $convert: true
 ){
-  $_return: th-property($heading, margin-top, $breakpoint, $base-font-size, $convert);
+  $_return: th-property(
+    $heading: $heading,
+    $property-name: margin-top,
+    $breakpoint: $breakpoint,
+    $convert: $convert,
+    $base-font-size: $base-font-size
+  );
   @return $_return;
 }
 
@@ -168,7 +186,13 @@ $th-properties: (
   $base-font-size: $th-base-font-size,
   $convert: true
 ){
-  $_return: th-property($heading, margin-bottom, $breakpoint, $base-font-size, $convert);
+  $_return: th-property(
+    $heading: $heading,
+    $property-name: margin-bottom,
+    $breakpoint: $breakpoint,
+    $convert: $convert,
+    $base-font-size: $base-font-size
+  );
   @return $_return;
 }
 
