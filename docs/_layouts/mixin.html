@@ -1,0 +1,68 @@
+<article class="doc doc-mixin">
+<header class="doc-header">
+<h4 class="doc-title">{{mixin.name}}</h4>
+</header>
+<div class="doc-content">
+<section class="doc-section doc-section-details">
+<h5 class="doc-section-title">Details</h5>
+<table class="doc-details">
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Since</th>
+<th>Group</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mixin</td>
+<td>{{mixin.description}}</td>
+<td>{{mixin.since}}</td>
+<td>{{mixin.group}}</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="doc-section doc-section-parameters">
+<h5 class="doc-section-title">Parameters</h5>
+<table class="doc-parameters">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+<th>Options</th>
+</tr>
+</thead>
+<tbody>
+{% for params in mixin.params %}
+<tr>
+{% for param in params %}
+<td>${{param[0]}}</td>
+{% for paramInner in param[1] %}
+{% if paramInner.type %}
+<td>{{paramInner.type}}</td>
+{% endif %}
+{% if paramInner.description %}
+<td>{{paramInner.description}}</td>
+{% endif %}
+{% if paramInner.default %}
+<td>{{paramInner.default}}</td>
+{% endif %}
+{% if paramInner.options %}
+<td>{{paramInner.options}}</td>
+{% endif %}
+{% endfor %}
+{% endfor %}
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</section>
+<section class="doc-section doc-section-content">
+{{mixin.content}}
+</section>
+</div>
+</article>

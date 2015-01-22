@@ -1,10 +1,18 @@
 <footer class="site-footer">
   <div class="site-inner site-footer-inner">
-    <ul>
-      <li>{{ site.title }}</li>
-      <li>{{ site.description }}</li>
-      <li><a href="{{site.url}}/change-log">Change Log</a> - <a href="https://github.com/ellioseven/type-heading">View on Github</a></li>
+      <p class="site-title">{{ site.title }}</p>
+      <p class="site-description">{{ site.description }}</p>
+      <nav class="menu">
+        <ul>
+          {% for page in site.pages %}
+            {% if page.title and page.menu %}
+            <li><a href="{{ page.url | prepend: site.url }}">{{ page.title }}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </nav>
     </ul>
+    <p class="site-github-link"><a href="https://github.com/ellioseven/type-heading">View on Github</a></p>
     <p>&copy; 2014 <a href="http://www.ellio7.com">Ellioseven</a></p>
   </div><!-- .site-footer -->
 </footer>

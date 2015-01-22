@@ -4,7 +4,7 @@
       <p class="branding-title"><a href="{{ site.url }}/">{{ site.title }}</a></p>
       <p class="branding-description">{{ site.description }}</p>
     </div>
-    <nav class="site-navigation">
+    <nav class="menu">
       <ul>
         {% for page in site.pages %}
           {% if page.title and page.menu %}
@@ -13,5 +13,6 @@
         {% endfor %}
       </ul>
     </nav>
+    <p class="site-github-link"><a href="https://github.com/ellioseven/type-heading">View on Github</a></p>
   </div><!-- .site-header-inner -->
 </header>
